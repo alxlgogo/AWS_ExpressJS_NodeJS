@@ -23,7 +23,6 @@ router.get('/vpc/:vpcid', function (req, res) {
             vpcid
         ]
     };
-
     ec2.describeVpcs(params, (err, data) => {
         if (err) {
             console.log("Error", err);

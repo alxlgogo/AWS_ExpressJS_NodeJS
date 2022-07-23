@@ -17,14 +17,14 @@ router.get('/subnets', function (req, res) {
     })
 });
 
-router.get('/subnet/:VpcId', function (req, res) {
-    let vpcId = req.params.VpcId;
+router.get('/subnet/:RegionName', function (req, res) {
+    let regionName = req.params.RegionName;
     let params = {
         Filters: [
             {
-                Name: "vpc-id",
+                Name: "RegionName",
                 Values: [
-                    vpcId
+                    regionName
                 ]
             }
         ]
