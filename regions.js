@@ -4,7 +4,7 @@ let AWS = require("aws-sdk");
 AWS.config.update({ region: 'eu-west-1' });
 
 let ec2 = new AWS.EC2({ apiVersion: '2016-11-15' });
-router.get('/regions', function (req, res) {
+router.get('/', function (req, res) {
     let params = {};
     ec2.describeRegions(params, function (err, data) {
         if (err) {
@@ -15,7 +15,7 @@ router.get('/regions', function (req, res) {
     });
 });
 
-router.get('/region/:regionName', function (req, res) {
+router.get('/:regionName', function (req, res) {
     let regionName = req.params.regionName;
     console.log(regionName);
 

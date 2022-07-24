@@ -5,7 +5,7 @@ let AWS = require("aws-sdk");
 AWS.config.update({ region: 'eu-west-1' });
 let ec2 = new AWS.EC2({ apiVersion: '2016-11-15' });
 
-router.get('/subnets', function (req, res) {
+router.get('/', function (req, res) {
     let params = {};
     ec2.describeSubnets(params, function (err, data) {
         if (err) {
@@ -17,14 +17,14 @@ router.get('/subnets', function (req, res) {
     })
 });
 
-router.get('/subnet/:RegionName', function (req, res) {
-    let regionName = req.params.RegionName;
+router.get('/:VpcId', function (req, res) {
+    let VpcId = req.params.VpcId;
     let params = {
         Filters: [
             {
-                Name: "RegionName",
+                Name: "vpc-id",
                 Values: [
-                    regionName
+                    VpcId
                 ]
             }
         ]
